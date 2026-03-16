@@ -10,10 +10,24 @@ const roles = [
   "Problem Solver",
 ];
 
+type Particle = { x: number; y: number; duration: number; delay: number };
+
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [particles, setParticles] = useState<Particle[]>([]);
+
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 20 }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        duration: 3 + Math.random() * 4,
+        delay: Math.random() * 3,
+      }))
+    );
+  }, []);
 
   useEffect(() => {
     const current = roles[roleIndex];
@@ -37,23 +51,20 @@ export default function Hero() {
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gray-950 px-6 text-center">
       {/* 배경 파티클 */}
       <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {particles.map((p, i) => (
           <motion.div
             key={i}
             className="absolute h-1 w-1 rounded-full bg-cyan-400 opacity-30"
-            initial={{
-              x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
-              y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
-            }}
+            initial={{ x: p.x, y: p.y }}
             animate={{
               y: [null, -20, 20],
               x: [null, -15, 15],
               opacity: [0.2, 0.6, 0.2],
             }}
             transition={{
-              duration: 3 + Math.random() * 4,
+              duration: p.duration,
               repeat: Infinity,
-              delay: Math.random() * 3,
+              delay: p.delay,
               ease: "easeInOut",
             }}
           />
