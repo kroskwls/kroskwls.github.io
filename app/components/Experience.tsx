@@ -78,7 +78,7 @@ function ExperienceCard({ exp, index }: { exp: typeof experiences[0]; index: num
       className="relative"
     >
       {/* 타임라인 도트 */}
-      <div className="absolute -left-2 top-6 hidden -translate-x-1/2 md:block">
+      <div className="absolute -left-5 top-6 hidden -translate-x-1/2 md:block">
         <motion.div
           initial={{ scale: 0 }}
           animate={inView ? { scale: 1 } : {}}
@@ -153,8 +153,7 @@ export default function Experience() {
 
         {/* 타임라인 */}
         <div className="relative space-y-8 md:ml-10 md:pl-10">
-          {/* 세로 선 — 도트 중앙에 오도록 left-0 배치 */}
-          <div className="absolute left-8 top-0 hidden h-full w-px bg-gray-700 md:block" />
+          <div className="absolute left-5 top-0 hidden h-full w-px bg-gray-700 md:block" />
           {experiences.map((exp, i) => (
             <ExperienceCard key={i} exp={exp} index={i} />
           ))}
