@@ -7,18 +7,47 @@ export default function Contact() {
     <section
       id="contact"
       style={{
-        padding: "6rem 2rem 8rem",
-        backgroundColor: "#f8fafc",
+        padding: "8rem 2rem",
+        background: "linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%)",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
+      {/* Decorative circles */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-30%",
+          right: "-10%",
+          width: "500px",
+          height: "500px",
+          borderRadius: "50%",
+          backgroundColor: "rgba(255,255,255,0.06)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-20%",
+          left: "-5%",
+          width: "350px",
+          height: "350px",
+          borderRadius: "50%",
+          backgroundColor: "rgba(255,255,255,0.05)",
+          pointerEvents: "none",
+        }}
+      />
+
       <div
         style={{
           maxWidth: "600px",
           margin: "0 auto",
           textAlign: "center",
+          position: "relative",
+          zIndex: 1,
         }}
       >
-        {/* Label */}
         <motion.span
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -26,10 +55,10 @@ export default function Contact() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{
             fontFamily: "var(--font-geist-mono), monospace",
-            fontSize: "0.7rem",
+            fontSize: "0.68rem",
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "#6366f1",
+            color: "rgba(255,255,255,0.75)",
             fontWeight: 600,
           }}
         >
@@ -42,10 +71,10 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
           style={{
-            fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
-            fontWeight: 800,
-            color: "#0f172a",
-            letterSpacing: "-0.03em",
+            fontSize: "clamp(2rem, 5vw, 3rem)",
+            fontWeight: 900,
+            color: "#ffffff",
+            letterSpacing: "-0.04em",
             marginTop: "0.75rem",
             marginBottom: "1rem",
           }}
@@ -61,7 +90,7 @@ export default function Contact() {
           style={{
             fontSize: "1rem",
             lineHeight: 1.75,
-            color: "#64748b",
+            color: "rgba(255,255,255,0.85)",
             marginBottom: "2.5rem",
           }}
         >
@@ -89,24 +118,25 @@ export default function Contact() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              backgroundColor: "#6366f1",
-              color: "#ffffff",
+              backgroundColor: "#ffffff",
+              color: "#d97706",
               textDecoration: "none",
-              padding: "0.8rem 2rem",
-              borderRadius: "8px",
+              padding: "0.85rem 2rem",
+              borderRadius: "999px",
               fontSize: "0.9rem",
-              fontWeight: 600,
-              transition: "background-color 0.2s ease, transform 0.15s ease",
+              fontWeight: 700,
+              transition: "transform 0.15s ease, box-shadow 0.15s ease",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
-              el.style.backgroundColor = "#4f46e5";
-              el.style.transform = "translateY(-1px)";
+              el.style.transform = "translateY(-2px)";
+              el.style.boxShadow = "0 8px 28px rgba(0,0,0,0.2)";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
-              el.style.backgroundColor = "#6366f1";
               el.style.transform = "translateY(0)";
+              el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.15)";
             }}
           >
             ✉ kroskwls@gmail.com
@@ -120,25 +150,25 @@ export default function Contact() {
               alignItems: "center",
               gap: "0.5rem",
               backgroundColor: "transparent",
-              color: "#6366f1",
+              color: "#ffffff",
               textDecoration: "none",
-              padding: "0.8rem 2rem",
-              borderRadius: "8px",
+              padding: "0.85rem 2rem",
+              borderRadius: "999px",
               fontSize: "0.9rem",
               fontWeight: 600,
-              border: "1.5px solid #c7d2fe",
+              border: "1.5px solid rgba(255,255,255,0.5)",
               transition: "all 0.2s ease",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
-              el.style.backgroundColor = "#eef2ff";
-              el.style.borderColor = "#6366f1";
-              el.style.transform = "translateY(-1px)";
+              el.style.backgroundColor = "rgba(255,255,255,0.15)";
+              el.style.borderColor = "rgba(255,255,255,0.8)";
+              el.style.transform = "translateY(-2px)";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
               el.style.backgroundColor = "transparent";
-              el.style.borderColor = "#c7d2fe";
+              el.style.borderColor = "rgba(255,255,255,0.5)";
               el.style.transform = "translateY(0)";
             }}
           >
@@ -164,21 +194,25 @@ export default function Contact() {
             {[
               { label: "← v1", href: "/" },
               { label: "← v2", href: "/v2" },
-              { label: "v4 →", href: "/v4" },
+              { label: "← v3", href: "/v3" },
             ].map((v) => (
               <a
                 key={v.href}
                 href={v.href}
                 style={{
                   fontFamily: "var(--font-geist-mono), monospace",
-                  fontSize: "0.7rem",
+                  fontSize: "0.68rem",
                   letterSpacing: "0.1em",
-                  color: "#94a3b8",
+                  color: "rgba(255,255,255,0.55)",
                   textDecoration: "none",
                   transition: "color 0.2s ease",
                 }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#6366f1")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8")}
+                onMouseEnter={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.9)")
+                }
+                onMouseLeave={(e) =>
+                  ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.55)")
+                }
               >
                 {v.label}
               </a>
@@ -187,8 +221,8 @@ export default function Contact() {
           <p
             style={{
               fontFamily: "var(--font-geist-mono), monospace",
-              fontSize: "0.7rem",
-              color: "#cbd5e1",
+              fontSize: "0.68rem",
+              color: "rgba(255,255,255,0.4)",
               marginTop: "0.25rem",
             }}
           >

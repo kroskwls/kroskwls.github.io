@@ -182,6 +182,14 @@ export default function Contact() {
         >
           → View Design v3
         </a>
+        <a
+          href="/v4"
+          style={{ color: "rgba(136,146,176,0.5)", textDecoration: "none", marginRight: "2rem", transition: "color 0.2s ease" }}
+          onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#c9a84c")}
+          onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(136,146,176,0.5)")}
+        >
+          → View Design v4
+        </a>
         Designed and built by Dongjin Cho — {new Date().getFullYear()}
       </motion.p>
     </section>

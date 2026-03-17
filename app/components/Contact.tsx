@@ -100,6 +100,12 @@ export default function Contact() {
         >
           → View Design v3
         </a>
+        <a
+          href="/v4"
+          className="text-xs tracking-widest text-gray-600 transition-colors hover:text-gray-400"
+        >
+          → View Design v4
+        </a>
         <p className="text-sm text-gray-700">
           © 2025 Dongjin Cho. Built with Next.js & TailwindCSS.
         </p>

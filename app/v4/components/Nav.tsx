@@ -11,6 +11,12 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
+const VERSION_LINKS = [
+  { label: "← v1", href: "/" },
+  { label: "← v2", href: "/v2" },
+  { label: "← v3", href: "/v3" },
+];
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
@@ -20,10 +26,7 @@ export default function Nav() {
       setScrolled(window.scrollY > 40);
       const isBottom =
         window.innerHeight + window.scrollY >= document.body.scrollHeight - 10;
-      if (isBottom) {
-        setActiveSection("contact");
-        return;
-      }
+      if (isBottom) setActiveSection("contact");
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -61,7 +64,7 @@ export default function Nav() {
         left: 0,
         right: 0,
         zIndex: 50,
-        backgroundColor: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
+        backgroundColor: scrolled ? "rgba(255,255,255,0.95)" : "transparent",
         boxShadow: scrolled ? "0 1px 0 rgba(0,0,0,0.08)" : "none",
         backdropFilter: scrolled ? "blur(12px)" : "none",
         transition: "all 0.3s ease",
@@ -69,7 +72,7 @@ export default function Nav() {
     >
       <div
         style={{
-          maxWidth: "1100px",
+          maxWidth: "1200px",
           margin: "0 auto",
           padding: "0 2rem",
           display: "flex",
@@ -83,52 +86,54 @@ export default function Nav() {
           href="#about"
           style={{
             fontFamily: "var(--font-geist-mono), monospace",
-            fontSize: "0.85rem",
-            letterSpacing: "0.12em",
-            color: "#4f46e5",
+            fontSize: "1rem",
+            fontWeight: 800,
+            color: "#d97706",
             textDecoration: "none",
-            textTransform: "uppercase",
-            fontWeight: 700,
+            letterSpacing: "-0.02em",
           }}
         >
           DC
+          <span style={{ color: "#fbbf24" }}>.</span>
         </a>
 
-        {/* Links */}
         <ul
           style={{
             display: "flex",
-            gap: "2rem",
+            gap: "1.75rem",
             listStyle: "none",
             margin: 0,
             padding: 0,
             alignItems: "center",
           }}
         >
-          {/* Version switchers */}
-          {[{ label: "← v1", href: "/" }, { label: "← v2", href: "/v2" }, { label: "v4 →", href: "/v4" }].map((v) => (
+          {/* Version pills */}
+          {VERSION_LINKS.map((v) => (
             <li key={v.href}>
               <a
                 href={v.href}
                 style={{
                   fontFamily: "var(--font-geist-mono), monospace",
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.06em",
                   textDecoration: "none",
-                  color: "#94a3b8",
-                  border: "1px solid #cbd5e1",
+                  color: "#a8a29e",
+                  border: "1px solid #e7e5e4",
                   padding: "3px 10px",
                   borderRadius: "999px",
                   transition: "all 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#4f46e5";
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "#4f46e5";
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.color = "#d97706";
+                  el.style.borderColor = "#fcd34d";
+                  el.style.backgroundColor = "#fffbeb";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8";
-                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "#cbd5e1";
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.color = "#a8a29e";
+                  el.style.borderColor = "#e7e5e4";
+                  el.style.backgroundColor = "transparent";
                 }}
               >
                 {v.label}
@@ -136,6 +141,7 @@ export default function Nav() {
             </li>
           ))}
 
+          {/* Section links */}
           {NAV_LINKS.map((link) => {
             const sectionId = link.href.replace("#", "");
             const isActive = activeSection === sectionId;
@@ -145,21 +151,20 @@ export default function Nav() {
                   href={link.href}
                   style={{
                     fontFamily: "var(--font-geist-mono), monospace",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
+                    fontSize: "0.72rem",
+                    letterSpacing: "0.06em",
                     textDecoration: "none",
-                    color: isActive ? "#4f46e5" : "#64748b",
+                    color: isActive ? "#d97706" : "#78716c",
                     fontWeight: isActive ? 600 : 400,
                     transition: "color 0.2s ease",
                   }}
                   onMouseEnter={(e) =>
-                    ((e.currentTarget as HTMLAnchorElement).style.color = "#4f46e5")
+                    ((e.currentTarget as HTMLAnchorElement).style.color = "#d97706")
                   }
                   onMouseLeave={(e) =>
                     ((e.currentTarget as HTMLAnchorElement).style.color = isActive
-                      ? "#4f46e5"
-                      : "#64748b")
+                      ? "#d97706"
+                      : "#78716c")
                   }
                 >
                   {link.label}

@@ -171,6 +171,33 @@ export default function Nav() {
               v3 →
             </a>
           </li>
+          <li>
+            <a
+              href="/v4"
+              style={{
+                fontFamily: "var(--font-geist-mono), monospace",
+                fontSize: "0.72rem",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+                color: "#4a5568",
+                border: "1px solid #4a5568",
+                padding: "3px 10px",
+                borderRadius: "999px",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.color = "#c9a84c";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "#c9a84c";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.color = "#4a5568";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "#4a5568";
+              }}
+            >
+              v4 →
+            </a>
+          </li>
           {NAV_LINKS.map((link) => {
             const sectionId = link.href.replace("#", "");
             const isActive = activeSection === sectionId;
