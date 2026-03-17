@@ -18,21 +18,49 @@ export default function Nav() {
   const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
+    // 스크롤 감지 (nav 배경용)
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const sectionIds = NAV_LINKS.map((l) => l.href.replace("#", ""));
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sectionIds[i]);
-        if (el && window.scrollY >= el.offsetTop - 120) {
-          setActiveSection(sectionIds[i]);
-          break;
-        }
+      // 페이지 끝 도달 시 마지막 섹션 강제 활성화
+      const isBottom =
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 10;
+      if (isBottom) {
+        setActiveSection("contact");
+        return;
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // IntersectionObserver로 각 섹션 가시성 감지
+    const sectionIds = NAV_LINKS.map((l) => l.href.replace("#", ""));
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id);
+          }
+        },
+        {
+          rootMargin: "-40% 0px -55% 0px", // 뷰포트 중간 지점에서 활성화
+          threshold: 0,
+        }
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observers.forEach((o) => o.disconnect());
+    };
   }, []);
 
   return (
