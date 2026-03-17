@@ -12,11 +12,6 @@ type ContactLink = {
 
 const CONTACT_LINKS: ContactLink[] = [
   {
-    label: "Phone",
-    value: "(604) 861-2799",
-    href: "tel:+16048612799",
-  },
-  {
     label: "Email",
     value: "kroskwls@gmail.com",
     href: "mailto:kroskwls@gmail.com",
@@ -179,6 +174,14 @@ export default function Contact() {
           textAlign: "center",
         }}
       >
+        <a
+          href="/v3"
+          style={{ color: "rgba(136,146,176,0.5)", textDecoration: "none", marginRight: "2rem", transition: "color 0.2s ease" }}
+          onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#c9a84c")}
+          onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "rgba(136,146,176,0.5)")}
+        >
+          → View Design v3
+        </a>
         Designed and built by Dongjin Cho — {new Date().getFullYear()}
       </motion.p>
     </section>

@@ -78,17 +78,6 @@ export default function Contact() {
             LinkedIn
           </motion.a>
 
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="tel:+16048612799"
-            className="flex items-center gap-2 rounded-full border border-gray-600 px-8 py-3 font-semibold text-gray-400 transition-colors hover:border-gray-400 hover:text-white"
-          >
-            <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.37h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-            </svg>
-            (604) 861-2799
-          </motion.a>
         </motion.div>
       </div>
 
@@ -104,6 +93,12 @@ export default function Contact() {
           className="text-xs tracking-widest text-gray-600 transition-colors hover:text-gray-400"
         >
           → View Design v2
+        </a>
+        <a
+          href="/v3"
+          className="text-xs tracking-widest text-gray-600 transition-colors hover:text-gray-400"
+        >
+          → View Design v3
         </a>
         <p className="text-sm text-gray-700">
           © 2025 Dongjin Cho. Built with Next.js & TailwindCSS.

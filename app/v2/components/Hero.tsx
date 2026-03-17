@@ -114,7 +114,6 @@ export default function Hero() {
           }}
         >
           {[
-            { label: "(604) 861-2799", href: "tel:+16048612799" },
             { label: "kroskwls@gmail.com", href: "mailto:kroskwls@gmail.com" },
             { label: "linkedin.com/in/dongjin-cho", href: "https://linkedin.com/in/dongjin-cho" },
           ].map((item) => (
