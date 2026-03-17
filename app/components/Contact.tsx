@@ -11,7 +11,7 @@ export default function Contact() {
   return (
     <section ref={ref} className="relative overflow-hidden bg-gray-950 px-6 py-24">
       {/* 배경 글로우 */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div className="h-96 w-96 rounded-full bg-cyan-500/5 blur-3xl" />
       </div>
 

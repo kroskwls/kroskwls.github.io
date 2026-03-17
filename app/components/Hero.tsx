@@ -50,7 +50,7 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gray-950 px-6 text-center">
       {/* 배경 파티클 */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {particles.map((p, i) => (
           <motion.div
             key={i}
@@ -73,7 +73,7 @@ export default function Hero() {
 
       {/* 그리드 배경 */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
