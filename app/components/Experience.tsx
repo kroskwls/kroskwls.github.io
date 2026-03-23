@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
@@ -8,16 +9,39 @@ const experiences = [
   {
     role: "Full Stack Developer",
     company: "CHA Health Systems, Inc.",
+    period: "Jun 2025 – Mar 2026",
+    location: "Remote",
+    color: "border-blue-500",
+    dotColor: "bg-blue-500",
+    bulletColor: "bg-blue-500",
+    periodColor: "text-blue-400",
+    skills: ["NestJS", "Next.js", "TypeScript", "PostgreSQL", "Prisma", "TanStack Query", "TailwindCSS", "Zustand"],
+    bullets: [
+      "Designed and implemented platform-wide auth/authorization: JWT, PBAC policy engine, and device trust-based multi-factor authentication.",
+      "Built core backend domain modules including permission invitations (7 use cases), outbound notification channels, and device trust management.",
+      "Implemented 24+ domain-specific API service layers with TanStack Query and multi-step login/signup frontend flows.",
+      "Designed multi-domain database schemas and established centralized error code system across the platform.",
+    ],
+    detailLink: "/experience/trace",
+    detailLabel: "View project details →",
+  },
+  {
+    role: "Full Stack Developer",
+    company: "CHA Health Systems, Inc.",
     period: "Sep 2024 – May 2025",
     location: "Seongnam, South Korea",
     color: "border-cyan-500",
     dotColor: "bg-cyan-500",
+    bulletColor: "bg-cyan-500",
+    periodColor: "text-cyan-400",
     skills: ["Next.js", "React", "TypeScript", "PostgreSQL", "AWS", "TailwindCSS", "Zustand"],
     bullets: [
       "Designed and implemented a secure authentication and session management system, including OAuth-based social login and RBAC.",
       "Integrated the ChatGPT API to provide AI-driven conversational responses and contextual guidance within the service.",
       "Developed a vector similarity evaluation feature measuring response correlation based on survey data using embedding techniques.",
     ],
+    detailLink: "/experience/cha-health",
+    detailLabel: "View project details →",
   },
   {
     role: "Database Architect",
@@ -26,12 +50,16 @@ const experiences = [
     location: "Seongnam, South Korea",
     color: "border-purple-500",
     dotColor: "bg-purple-500",
+    bulletColor: "bg-purple-500",
+    periodColor: "text-purple-400",
     skills: ["PostgreSQL", "SQL", "Query Optimization", "Data Modeling", "Database Standardization"],
     bullets: [
       "Designed and standardized database schemas to ensure structural consistency and scalability.",
       "Managed and maintained the organization's database standardization dictionary for unified data design.",
       "Developed optimized SQL queries for robot usage history statistics and performance analysis.",
     ],
+    detailLink: "/experience/data-architecture",
+    detailLabel: "View project details →",
   },
   {
     role: "Full Stack Developer",
@@ -40,6 +68,8 @@ const experiences = [
     location: "Seongnam, South Korea",
     color: "border-green-500",
     dotColor: "bg-green-500",
+    bulletColor: "bg-green-500",
+    periodColor: "text-green-400",
     skills: ["Spring Framework", "PostgreSQL", "Next.js", "React", "TypeScript", "TailwindCSS", "Zustand"],
     bullets: [
       "Designed and implemented data interfaces for 10 robot models, enabling seamless data integration and communication.",
@@ -51,10 +81,12 @@ const experiences = [
   {
     role: "Full Stack Developer",
     company: "Naviworks",
-    period: "Sep 2024 – May 2025",
+    period: "Apr 2018 – Jul 2021",
     location: "Anyang, South Korea",
     color: "border-orange-500",
     dotColor: "bg-orange-500",
+    bulletColor: "bg-orange-500",
+    periodColor: "text-orange-400",
     skills: ["React", "Spring Framework", "PostGIS", "CesiumJS", "Jenkins", "Query Optimization"],
     bullets: [
       "Conducted software development in specialized domains: Defense Cyber Operations, Marine eNavigation, and Ship Cybersecurity Certification.",
@@ -65,7 +97,7 @@ const experiences = [
   },
 ];
 
-function ExperienceCard({ exp, index }: { exp: typeof experiences[0]; index: number }) {
+function ExperienceCard({ exp, index }: { exp: (typeof experiences)[0]; index: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -96,7 +128,7 @@ function ExperienceCard({ exp, index }: { exp: typeof experiences[0]; index: num
             <p className="text-sm font-medium text-gray-300">{exp.company}</p>
           </div>
           <div className="text-right">
-            <p className="text-sm font-semibold text-cyan-400">{exp.period}</p>
+            <p className={`text-sm font-semibold ${exp.periodColor}`}>{exp.period}</p>
             <p className="text-xs text-gray-500">{exp.location}</p>
           </div>
         </div>
@@ -110,7 +142,7 @@ function ExperienceCard({ exp, index }: { exp: typeof experiences[0]; index: num
               transition={{ delay: 0.1 * i + 0.3 }}
               className="flex gap-2 text-sm leading-relaxed text-gray-400"
             >
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />
+              <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${exp.bulletColor}`} />
               {b}
             </motion.li>
           ))}
@@ -126,6 +158,15 @@ function ExperienceCard({ exp, index }: { exp: typeof experiences[0]; index: num
             </span>
           ))}
         </div>
+
+        {"detailLink" in exp && exp.detailLink && (
+          <Link
+            href={exp.detailLink}
+            className="mt-4 inline-block font-mono text-xs text-purple-400 transition-colors hover:text-purple-300"
+          >
+            {"detailLabel" in exp ? exp.detailLabel : "View details →"}
+          </Link>
+        )}
       </div>
     </motion.div>
   );
@@ -136,7 +177,7 @@ export default function Experience() {
   const inView = useInView(ref, { once: true });
 
   return (
-    <section className="bg-gray-950 px-6 py-24">
+    <section id="experience" className="overflow-x-hidden bg-gray-950 px-6 py-24">
       <div className="mx-auto max-w-3xl">
         <motion.div
           ref={ref}

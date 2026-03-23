@@ -31,7 +31,7 @@ export default function Education() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="bg-gray-900 px-6 py-24">
+    <section id="education" ref={ref} className="bg-gray-950 px-6 py-24">
       <div className="mx-auto max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
