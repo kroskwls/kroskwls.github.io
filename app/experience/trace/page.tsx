@@ -9,13 +9,6 @@ export const metadata: Metadata = {
 
 const techs = ["NestJS", "Next.js", "TypeScript", "PostgreSQL", "Prisma", "TanStack Query", "TailwindCSS", "Zustand"];
 
-const summaryBullets = [
-  "Designed and implemented platform-wide auth/authorization: JWT RS256, RBAC policy engine, and device trust-based multi-factor authentication.",
-  "Built core backend domain modules including permission invitations (7 use cases), outbound notification channels, and device trust management.",
-  "Implemented 24+ domain-specific API service layers with TanStack Query and multi-step login/signup frontend flows.",
-  "Designed multi-domain database schemas and established centralized error code system across the platform.",
-];
-
 const architectureApps = [
   { name: "admin-frontend", sub: "Next.js 15", type: "frontend" as const },
   { name: "end-user-frontend", sub: "Next.js 15", type: "frontend" as const },
@@ -265,11 +258,10 @@ export default function TracePage() {
               {architectureApps.map((app) => (
                 <div
                   key={app.name}
-                  className={`rounded-lg border p-4 text-center ${
-                    app.type === "backend"
-                      ? "border-indigo-400/20 bg-indigo-400/5"
-                      : "border-blue-400/20 bg-blue-400/5"
-                  }`}
+                  className={`rounded-lg border p-4 text-center ${app.type === "backend"
+                    ? "border-indigo-400/20 bg-indigo-400/5"
+                    : "border-blue-400/20 bg-blue-400/5"
+                    }`}
                 >
                   <p className={`text-sm font-semibold ${app.type === "backend" ? "text-indigo-400" : "text-blue-400"}`}>
                     {app.name}
@@ -296,11 +288,10 @@ export default function TracePage() {
                     {items.map((item) => (
                       <div
                         key={item.name}
-                        className={`flex items-center justify-between rounded-md px-3 py-2 text-sm ${
-                          group === "Backend"
-                            ? "border-l-2 border-indigo-400 bg-indigo-400/5"
-                            : "border-l-2 border-blue-400 bg-blue-400/5"
-                        }`}
+                        className={`flex items-center justify-between rounded-md px-3 py-2 text-sm ${group === "Backend"
+                          ? "border-l-2 border-indigo-400 bg-indigo-400/5"
+                          : "border-l-2 border-blue-400 bg-blue-400/5"
+                          }`}
                       >
                         <span className="font-medium text-gray-200">{item.name}</span>
                         <span className="text-xs text-gray-500">{item.detail}</span>
@@ -378,9 +369,8 @@ export default function TracePage() {
                     </span>
                   </div>
                 )}
-                <div className={`w-full rounded-lg border bg-gray-900 p-4 ${
-                  step.isBranch ? "border-l-2 border-l-blue-400 border-gray-700" : "border-gray-700"
-                }`}>
+                <div className={`w-full rounded-lg border bg-gray-900 p-4 ${step.isBranch ? "border-l-2 border-l-blue-400 border-gray-700" : "border-gray-700"
+                  }`}>
                   <div className="mb-1 flex items-center gap-2">
                     <span className="font-mono text-xs text-blue-400">{i + 1}</span>
                     <span className="text-sm font-semibold text-gray-100">{step.label}</span>
@@ -406,9 +396,8 @@ export default function TracePage() {
           <div className="mx-auto flex max-w-2xl flex-col items-center gap-2">
             {rbacStages.map((stage, si) => (
               <div key={stage.num} className="w-full">
-                <div className={`w-full rounded-xl border bg-gray-900 overflow-hidden ${
-                  stage.num === 4 ? "border-blue-400/40 shadow-[0_0_24px_rgba(56,189,248,0.08)]" : "border-gray-700"
-                }`}>
+                <div className={`w-full rounded-xl border bg-gray-900 overflow-hidden ${stage.num === 4 ? "border-blue-400/40 shadow-[0_0_24px_rgba(56,189,248,0.08)]" : "border-gray-700"
+                  }`}>
                   {/* Header */}
                   <div className="flex items-center gap-3 border-b border-gray-700 bg-blue-400/5 px-5 py-3">
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-400 text-xs font-bold text-gray-950">
@@ -451,9 +440,8 @@ export default function TracePage() {
                         <div className="mb-4 space-y-2">
                           {stage.evals.map((ev) => (
                             <div key={ev.desc} className="flex items-center gap-3 text-sm text-gray-400">
-                              <span className={`rounded px-2 py-0.5 font-mono text-xs font-bold ${
-                                ev.logic === "AND" ? "bg-blue-400/15 text-blue-400" : "bg-yellow-400/15 text-yellow-400"
-                              }`}>
+                              <span className={`rounded px-2 py-0.5 font-mono text-xs font-bold ${ev.logic === "AND" ? "bg-blue-400/15 text-blue-400" : "bg-yellow-400/15 text-yellow-400"
+                                }`}>
                                 {ev.logic}
                               </span>
                               {ev.desc}
@@ -462,11 +450,10 @@ export default function TracePage() {
                         </div>
                         <div className="flex gap-2 border-t border-gray-700 pt-3">
                           {stage.results!.map((r) => (
-                            <span key={r} className={`rounded-md px-3 py-1 font-mono text-xs font-semibold ${
-                              r === "PERMIT" ? "bg-green-400/10 text-green-400" :
+                            <span key={r} className={`rounded-md px-3 py-1 font-mono text-xs font-semibold ${r === "PERMIT" ? "bg-green-400/10 text-green-400" :
                               r === "DENY" ? "bg-red-400/10 text-red-400" :
-                              "bg-gray-700 text-gray-500"
-                            }`}>
+                                "bg-gray-700 text-gray-500"
+                              }`}>
                               {r}
                             </span>
                           ))}

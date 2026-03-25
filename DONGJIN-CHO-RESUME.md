@@ -20,7 +20,7 @@ kroskwls@gmail.com | [linkedin.com/in/dongjin-cho](https://linkedin.com/in/dongj
 **Jun 2025 -- Mar 2026** | Remote
 
 - Designed and implemented platform-wide auth/authorization: JWT, PBAC policy engine, and device trust-based multi-factor authentication.
-- Built core backend domain modules including permission invitations (7 use cases), outbound notification channels, and device trust management.
+- Built core backend domain modules including permission invitations, email-based OTP authentication and device trust management.
 - Implemented 24+ domain-specific API service layers with TanStack Query and multi-step login/signup frontend flows.
 - Designed multi-domain database schemas and established centralized error code system across the platform.
 
